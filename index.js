@@ -5,10 +5,7 @@ const pjson = require('./package.json');
 const root = __dirname;
 
 function askdialog(config) {
-  var cmd = ""//path.join('python', 'python-static')
-  //if (process.platform === 'win32') {
-  //  cmd = path.join(cmd, 'win', 'python.exe')
-  //}
+  var cmd = ""
   if (config.type === 'directory')
     cmd += ' -d';
   else if (config.type === 'save-file')
@@ -39,7 +36,7 @@ function askdialog(config) {
 
 
   var promise = new Promise((resolve, reject) => {
-    exec("python \"" + __dirname + '/python/dialog.py\" ' + cmd, (error, stdout, stderr) => {
+    exec(root + "\\python\\dist\\dialog.exe" + cmd, (error, stdout, stderr) => {
       if (stdout) {
         if (stdout.trim() === 'None')
           reject(new Error('Nothing selected'));
