@@ -1,4 +1,4 @@
-const dialog = require('./index').dialog;
+const dialog = require('node-file-dialog').dialog;
 const config = {
   type: 'open-file',
   extra: {
